@@ -1,0 +1,7 @@
+sitename: 澳洲电影票务
+
+wechat_api:
+  url: http://ozboxoffice.websitesydney.net/wechat/api
+  token: Lh1SkHVt7Dx
+  encoding_aes_key: P1JUsQbFX6AL5soFjtODjBkBtTg2xkBMcVAQIpLEs5Z
+  

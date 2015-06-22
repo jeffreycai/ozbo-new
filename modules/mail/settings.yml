@@ -1,0 +1,13 @@
+mail:
+  # conf for email sending to amdin
+  admin:
+    to: jeffreycaizhenyuan@gmail.com
+    from: findloveinsydney@gmail.com
+    mailer: smtp
+    SMTPSecure: tls
+    host: smtp.mandrillapp.com
+    port: 587
+    username: jeanboy186@163.com
+    nickname: DingTie
+    password: WclNgz4kJJ_Yh_I4gvbj_g
+    
