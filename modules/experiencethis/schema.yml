@@ -1,0 +1,134 @@
+et_ticket:
+  pk: id
+  fields:
+    id: INT NOT NULL AUTO_INCREMENT
+    url: VARCHAR(256) NOT NULL
+    local_path: VARCHAR(20)
+    ticket_type: TINYINT(1)
+    cost: FLOAT
+    sent_at: INT DEFAULT NULL
+    created_at: INT
+  form:
+    fields:
+      url:
+        widget: text
+        widget_conf:
+          required: 1
+          size: 256
+      local_url:
+        widget: text
+        widget_conf:
+          required: 0
+      ticket_type:
+        widget: select
+        widget_conf:
+          required: 1
+          options:
+            1: "Adult eSaver"
+            2: "eMovie"
+            3: "Child eSaver"
+      cost:
+        widget: text
+        widget_conf:
+          required: 1
+      sent_at:
+        widget: text
+        widget_conf:
+          required: 0
+      created_at:
+        widget: text
+        widget_conf:
+          required: 0
+    names:
+      en: ExperienceThis Ticket
+      zh: ExperienceThis 电影票
+
+    
+order:
+  pk: id
+  fields:
+    id: INT NOT NULL AUTO_INCREMENT
+    email: VARCHAR(128)
+    wechat_id: VARCHAR(32)
+    ticket_type: TINYINT(1)
+    created_at: INT
+    processed: TINYINT(1) DEFAULT 0
+    processed_at: INT
+  form:
+    fields:
+      email:
+        widget: email
+        widget_conf:
+          required: 1
+      wechat_id:
+        widget: text
+        widget_conf:
+          required: 0
+      ticket_type:
+        widget: select
+        widget_conf:
+          required: 1
+          options:
+            1: "Adult eSaver"
+            2: "eMovie"
+            3: "Child eSaver"
+      created_at:
+        widget: text
+        widget_conf:
+          required: 0
+      processed:
+        widget: checkbox_single
+        widget_conf: 
+      processed_at:
+        widget: text
+        widget_conf:
+          required: 0
+    names:
+      en: Order
+      zh: 订单
+
+transaction:
+  pk: id
+  fields:
+    id: INT NOT NULL AUTO_INCREMENT
+    ticket_id: INT
+    order_id: INT
+    timestamp: INT
+    payment: FLOAT
+    gross_profit: FLOAT
+  fks:
+    ticket_id:
+      foreign_key: ticket_id
+      references: et_ticket.id
+      on_delete: CASCADE
+      on_update: CASCADE
+    order_id:
+      foreign_key: order_id
+      references: order.id
+      on_delete: CASCADE
+      on_update: CASCADE
+  form:
+    fields:
+      ticket_id:
+        widget: text
+        widget_conf:
+          required: 0
+      order_id:
+        widget: text
+        widget_conf:
+          required: 0
+      timestamp:
+        widget: text
+        widget_conf:
+          required: 0
+      payment:
+        widget: text
+        widget_conf:
+          required: 0
+      gross_profit:
+        widget: text
+        widget_conf:
+          required: 0
+    names:
+      en: Transaction
+      zh: 交易

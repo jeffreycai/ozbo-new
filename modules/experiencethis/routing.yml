@@ -1,0 +1,85 @@
+routing:
+
+  admin_et_ticket_list:
+    path: ^\/admin\/et_ticket\/list\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/et_ticket_list
+  admin_et_ticket_edit:
+    path: ^\/admin\/et_ticket\/edit\/(\d+)\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/et_ticket_edit
+  admin_et_ticket_create:
+    path: ^\/admin\/et_ticket\/create\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/et_ticket_create
+  admin_et_ticket_delete:
+    path: ^\/admin\/et_ticket\/delete\/(\d+)\/?$
+    isSecure: 1
+    i18n: 0
+    controller: experiencethis/backend/et_ticket_delete
+  
+  
+  admin_et_ticket_import:
+    path: ^\/admin\/et_ticket\/import\/?$
+    isSecure: 1
+    i18n: 0
+    controller: experiencethis/backend/et_ticket_import
+  admin_et_ticket_download:
+    path: ^\/admin\/et_ticket\/download\/(\d+)\/?$
+    isSecure: 1
+    i18n: 0
+    controller: experiencethis/backend/et_ticket_download
+  admin_et_ticket_order:
+    path: ^\/admin\/et_ticket\/order\/?$
+    isSecure: 1
+    i18n: 0
+    controller: experiencethis/backend/et_ticket_order
+  
+
+  admin_order_list:
+    path: ^\/admin\/order\/list\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/order_list
+  admin_order_edit:
+    path: ^\/admin\/order\/edit\/(\d+)\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/order_edit
+  admin_order_create:
+    path: ^\/admin\/order\/create\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/order_create
+  admin_order_delete:
+    path: ^\/admin\/order\/delete\/(\d+)\/?$
+    isSecure: 1
+    i18n: 0
+    controller: experiencethis/backend/order_delete
+
+  admin_transaction_list:
+    path: ^\/admin\/transaction\/list\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/transaction_list
+  admin_transaction_edit:
+    path: ^\/admin\/transaction\/edit\/(\d+)\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/transaction_edit
+  admin_transaction_create:
+    path: ^\/admin\/transaction\/create\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/transaction_create
+  admin_transaction_delete:
+    path: ^\/admin\/transaction\/delete\/(\d+)\/?$
+    isSecure: 1
+    i18n: 0
+    controller: experiencethis/backend/transaction_delete
+    
+    
+    

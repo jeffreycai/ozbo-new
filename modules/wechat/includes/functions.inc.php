@@ -1,7 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
+function load_library_wechat_sdk() {
+  require_once  MODULESROOT . DS . 'wechat' . DS . 'includes' . DS . 'libraries' . DS . 'wechat-php-sdk' . DS . 'wechat.class.php';
+}

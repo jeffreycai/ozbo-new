@@ -16,6 +16,8 @@ if (isset($custom_modules)) {
       'database',
       'form',
       'site',
+      'experiencethis',
+//      'wechat',
       'mail',
       'crawler',
 //      'queue',

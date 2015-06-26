@@ -4,6 +4,11 @@ routing:
     isSecure: 0
     i18n: 0
     controller: site/index
+  buy:
+    path: ^\/buy\/?$
+    isSecure: 0
+    i18n: 0
+    controller: site/buy
   wechat_api:
     path: ^\/wechat\/api\/?$
     isSecure: 0

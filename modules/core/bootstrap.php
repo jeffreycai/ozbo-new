@@ -11,6 +11,14 @@ if (!is_writable(FILE_DIR)) {
   die('File directory needs to be writable');
 }
 
+define('CACHE_DIR', FILE_DIR . DS . 'cache');
+if (!is_dir(CACHE_DIR)) {
+  mkdir(CACHE_DIR);
+}
+if (!is_writable(CACHE_DIR)) {
+  die('Cache directory needs to be writable');
+}
+
 
 
 // register maintenance admin page

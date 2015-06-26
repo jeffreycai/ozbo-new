@@ -55,18 +55,11 @@ class Crawler {
   }
   
   public function setMultipart() {
-    $this->addHeader("Content-Type:multipart/form-data");
+    $this->setHeaderItem("Content-Type", "multipart/form-data");
   }
   
   public function setReferer($url) {
-    $this->addHeader("Referer: " . $url);
-  }
-  
-  public function addHeader($content) {
-    if (!is_array($this->header)) {
-      $this->header = array();
-    }
-    $this->header[] = $content;
+    $this->setHeaderItem("Referer", $url);
   }
   
   public function unSetUseTor() {
@@ -79,6 +72,28 @@ class Crawler {
   
   public function unsetHeader() {
     unset($this->header);
+  }
+  
+  public function setHeaderItem($key, $value) {
+    if (!is_array($this->header)) {
+      $this->header = array();
+    }
+    $this->header[$key] = $value;
+  }
+  
+  public function unsetHeaderItem($key) {
+    unset($this->header[$key]);
+  }
+  
+  public function getHeader() {
+    if (isset($this->header)) {
+      $headers = array();
+      foreach ($this->header as $key => $value) {
+        $headers[] = "$key: $value";
+      }
+      return $headers;
+    }
+    return null;
   }
   
   public function read($url) {
@@ -98,8 +113,9 @@ class Crawler {
       curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
     }
     // use given headers if passed
-    if ($this->header) {
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
+    $header = $this->getHeader();
+    if ($header) {
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
     }
 
     $result = curl_exec($ch);
@@ -107,7 +123,15 @@ class Crawler {
     return $result;
   }
   
-  public function post($url, $post_data) {
+  public function post($url, $post_data, $multipart = false) {
+    
+    if (is_array($post_data) && !$multipart) {
+      $tokens = array();
+      foreach ($post_data as $key => $val) {
+        $tokens[] = urlencode($key) . "=" . urlencode($val);
+      }
+      $post_data = implode("&", $tokens);
+    }
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // whether to print out or not when curl_exec();
@@ -123,8 +147,9 @@ class Crawler {
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
 
     // use given headers if passed
-    if ($this->header) {
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
+    $header = $this->getHeader();
+    if ($header) {
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
     }
     // set to use tor if passed
     if ($this->use_tor) {
