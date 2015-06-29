@@ -1,17 +1,50 @@
 <?php
-
+//die(encrypt('982'));
 if (isset($_POST['submit'])) {
   $type = $_POST['ticket_type'];
   $number = $_POST['number'];
   
+  // login to experiencethis first so that we have the cookie
   $crawler = new Crawler();
   $crawler->setCookiePath(CACHE_DIR . DS . 'nrma_cookie.txt');
   $crawler->clearCookie();
+  // get form token first
+  $result = $crawler->read('https://www.experiencethis.com.au/Account/Login');
+  $matches = array();
+  $token;
+  preg_match('/id="token"(.+)?value="(.+)?"/', $result, $matches);
+  if (isset($matches[2])) {
+    $token = $matches[2];
+  } else {
+    Message::register(new Message(Message::DANGER, "Error when geting Experiencethis login form token"));
+    HTML::forwardBackToReferer();
+  }
+  
+  $crawler->setReferer('https://www.experiencethis.com.au/Account/Login');
+  $result = $crawler->post('https://www.experiencethis.com.au/Account/Login', array(
+      "txtUserName" => decrypt($settings['experiencethis_account']['username']),
+      "txtPassword" => decrypt($settings['experiencethis_account']['password']),
+      "txtForm" => "",
+      "token" => $token,
+      "btnLogin.x" => rand(50, 60),
+      "btnLogin.y" => rand(20, 29),
+      "ReturnUrl" => ""
+  ));
+  if(strpos($result, 'Welcome back') == false) {
+    Message::register(new Message(Message::DANGER, 'Error when logging into Experiencethis'));
+    HTML::forwardBackToReferer();
+  }
+  
+  /** Start doing ticket purchase **/
+  $crawler = new Crawler();
+  $crawler->setCookiePath(CACHE_DIR . DS . 'nrma_cookie.txt');
+//  $crawler->clearCookie();
   $crawler->setReferer('https://www.experiencethis.com.au/mynrma/login');
   // login first
-  $members = load_fixture('experiencethis', 'nrma_member.yml');
-  $member_idx = array_rand($members);
-  $member_id = $members[$member_idx];
+//  $members = load_fixture('experiencethis', 'nrma_member.yml');
+//  $member_idx = array_rand($members);
+//  $member_id = $members[$member_idx];
+  $member_id = $settings['nrma']['member_id'];
   
   $result = $crawler->post('https://www.experiencethis.com.au/mynrma/login', array(
       "tf_membernumber" => $member_id
@@ -66,9 +99,11 @@ if (isset($_POST['submit'])) {
   $crawler->setReferer('https://www.experiencethis.com.au/mynrma');
   $crawler->read('https://www.experiencethis.com.au/mynrma/cart');
   // "you details" page - step 2
-  $buyers = load_fixture('experiencethis', 'fake_buyers.yml');
-  $buyer_index = array_rand($buyers);
-  $buyer = $buyers[$buyer_index];
+//  $buyers = load_fixture('experiencethis', 'fake_buyers.yml');
+//  $buyer_index = array_rand($buyers);
+//  $buyer = $buyers[$buyer_index];
+  
+  $buyer = $settings['buyer'];
   
   $crawler->setReferer('https://www.experiencethis.com.au/mynrma/cart');
   $crawler->read('https://www.experiencethis.com.au/mynrma/details');
@@ -101,11 +136,11 @@ if (isset($_POST['submit'])) {
   // "online payment" - step 4
   $crawler->setReferer('https://www.experiencethis.com.au/mynrma/Payment');
   $result = $crawler->post('https://www.experiencethis.com.au/mynrma/Payment', array(
-      "tf_card_name" => "ZHENYUAN CAI",
-      "tf_card_number" => "2432432432432",
-      "tf_month" => "02",
-      "tf_year" => "14",
-      "tf_cvv" => "332"
+      "tf_card_name" => decrypt($settings['cc']['name']),
+      "tf_card_number" => decrypt($settings['cc']['number']),
+      "tf_month" => decrypt($settings['cc']['month']), // e.g. "02"
+      "tf_year" => decrypt($settings['cc']['year']), // e.g. "14"
+      "tf_cvv" => decrypt($settings['cc']['cvv'])
   ));
   // "confirm order" - step 5
   if (strpos($result, 'Confirm and Buy') == false) {
@@ -114,16 +149,19 @@ if (isset($_POST['submit'])) {
   }
   $crawler->setReferer('https://www.experiencethis.com.au/mynrma/Confirm');
   $result = $crawler->post('https://www.experiencethis.com.au/mynrma/Confirm', array(
-      "CardName" => "ZHENYUAN CAI",
-      "CardNumber" => "2432432432432",
-      "CVV" => "332",
-      "ExipryMonth" => "02",
-      "ExipryYear" => "15"
+      "CardName" => decrypt($settings['cc']['name']),
+      "CardNumber" => decrypt($settings['cc']['number']),
+      "CVV" => decrypt($settings['cc']['cvv']),
+      "ExipryMonth" => decrypt($settings['cc']['month']),
+      "ExipryYear" => decrypt($settings['cc']['year'])
   ));
   // final, see if the transaction is good or not
-
-  
-  die($result);
+  if (strpos($result, 'Congratulations!')) {
+    Message::register(new Message(Message::SUCCESS, 'Ticket successfully purchased!!'));
+  } else {
+    Message::register(new Message(Message::DANGER, 'Error with credit card payment: <br /><br />' . $result));
+  }
+  HTML::forwardBackToReferer();
 }
 
 $html = new HTML();

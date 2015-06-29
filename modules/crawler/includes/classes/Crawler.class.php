@@ -10,7 +10,7 @@ class Crawler {
     // default values
     $this->agent = 'Mozilla/5.0 (Windows NT 5.1; rv:24.0) Gecko/20100101 Firefox/24.0';
     $this->use_tor = false;
-    $this->header = false;
+    $this->header = array();
     $this->cookie_path = null;
   }
   

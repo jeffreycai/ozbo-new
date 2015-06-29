@@ -16,10 +16,10 @@ class FormWidgetCheckboxMultiple extends FormWidget {
   public function render($module, $model) {
     $options = "";
     foreach ($this->options as $key => $val) {
-      $options .= "\n      <label><input type='checkbox' name='".$this->name."[]' value='$key' /> $val</label>";
+      $options .= "\n      <label><input type='checkbox' [[[ if (in_array('$val', \$items)): ]]]checked='checked'[[[ endif; ]]] name='".$this->name."[]' value='$key' /> $val</label>";
     }
     
-    $rtn = "";
+    $rtn = "\n       [[[ \$items = (\$object->isNew() ? (isset(\$_POST['$this->name']) ? explode(';', \$_POST['$this->name']) : '') : explode(';', \$object->get". format_as_class_name($this->name)."() )) ]]]";
     $rtn .=
 "\n<div class='form-group'>
   <label>$this->name</label>
@@ -46,7 +46,7 @@ class FormWidgetCheckboxMultiple extends FormWidget {
   
   public function proceed() {
     $rtn = "\n  // proceed for $".$this->name."\n";
-    $rtn .= ' // TODO
+    $rtn .= '  $object->set'.format_as_class_name($this->name).'(implode(";", $'.$this->name.'));
 ';
     return $rtn;
   }

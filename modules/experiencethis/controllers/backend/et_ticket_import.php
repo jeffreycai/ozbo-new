@@ -34,9 +34,15 @@ if (isset($_POST['submit'])) {
       } else {
         // get ticket type
         $type;
-        // Adult eSaver
         if (strpos($html, 'Adult eSaver')) {
-          $type = EtTicket::TYPE_ADULT_ESAVER;
+            $type = EtTicket::TYPE_ADULT_ESAVER;
+        } else if (strpos($html, 'eMovie')) {
+            $type = EtTicket::TYPE_EMOVIE;
+        } else {
+            Message::register(new Message(Message::DANGER, 'Can not identify ticket type'));
+            HTML::forwardBackToReferer();
+        }
+
           $cost = $settings['ticket_type'][$type]['cost'];
           
           // replace img src with full path
@@ -91,11 +97,7 @@ if (isset($_POST['submit'])) {
               $error_flag++;
             }
           }
-        } else {
-          Message::register(new Message(Message::DANGER, 'Can not identify ticket type'));
-          $error_flag++;
-        }
-        
+
       }
     }
   } else {

@@ -17,3 +17,27 @@ ticket_type:
 
 payment_type:
   1: stripe
+  
+experiencethis_account:
+  username: "hhlQk9UQt12bj5CbpFWbnBUbvNmLn5Wa2F2c1F2V"
+  password: "SRmW==wSDl2b2gTMsR2ZnNWekRET"
+  
+cc:
+  name: "uZXa=MkWktWSBNEIOFUVZ5URIpVN"
+  number: "xY3aUBVayZTO5kjNzkzNyUDOxMTNzUDc"
+  month: "yZlU==gNM5kVxATM"
+  year: "TFEZ==QeTZEU3EzN"
+  cvv: "mVzQ=YTRERjM4kTT"
+
+nrma:
+  member_id: 9407466
+
+buyer:
+  email: ausaving.com@gmail.com
+  title: Mr
+  firstname: Jeffrey
+  lastname: Cai
+  address1: 15 Cowper St
+  suburb: Parramatta
+  state: NSW
+  postcode: 2150
