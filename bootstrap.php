@@ -20,7 +20,7 @@ if (isset($custom_modules)) {
 //      'wechat',
       'mail',
       'crawler',
-//      'queue',
+      'log',
   );
 
 }

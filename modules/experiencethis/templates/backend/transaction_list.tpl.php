@@ -20,7 +20,7 @@
       <tr role="row">
                 <th>id</th>
                 <th>ticket_id</th>
-                <th>order_id</th>
+                <th>lead_id</th>
                 <th>timestamp</th>
                 <th>payment</th>
                 <th>gross_profit</th>
@@ -32,7 +32,7 @@
     <tr>
             <td><?php echo $object->getId() ?></td>
             <td><?php echo $object->getTicketId() ?></td>
-            <td><?php echo $object->getOrderId() ?></td>
+            <td><?php echo $object->getLeadId() ?></td>
             <td><?php echo $object->getTimestamp() ?></td>
             <td><?php echo $object->getPayment() ?></td>
             <td><?php echo $object->getGrossProfit() ?></td>

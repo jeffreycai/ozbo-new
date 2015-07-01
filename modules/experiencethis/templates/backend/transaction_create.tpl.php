@@ -27,8 +27,8 @@
 </div>
   
 <div class='form-group'>
-  <label for='order_id'>order_id</label>
-  <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['order_id']) ? strip_tags($_POST['order_id']) : '') : $object->getOrderId()))) ?>' type='text' class='form-control' id='order_id' name='order_id' />
+  <label for='lead_id'>lead_id</label>
+  <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['lead_id']) ? strip_tags($_POST['lead_id']) : '') : $object->getLeadId()))) ?>' type='text' class='form-control' id='lead_id' name='lead_id' />
 </div>
   
 <div class='form-group'>

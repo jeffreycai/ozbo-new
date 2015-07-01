@@ -1,5 +1,95 @@
 body {
- font-family: "Helvetica Neue",Helvetica,Arial,Tahoma,sans-serif;
- color: #464646;
- font-size: 15px;
+  font-family: "MS PGothic","Meiryo","Segoe UI Symbol" !important;
+  padding-top: 70px;
+}
+.container,
+.jumbotron .container {
+  max-width: 768px;
+}
+.navbar-header a {
+  color: #FFF !important;
+}
+.jumbotron {
+  text-align: center;
+  background: #BA2025;
+  color: #FFF;
+  padding-bottom: 20px;
+  margin-top: 50px;
+}
+.jumbotron.general h1 {
+  margin-bottom: 30px;
+  margin-top: 15px;
+}
+.home .jumbotron {
+  padding-bottom: 30px;
+}
+.home .jumbotron h1 {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+.home .jumbotron p {
+  margin-bottom: 30px;
+}
+.home .card .img-responsive {
+  width: 100%;
+}
+#footer {
+  font-size: 0.8em;
+  padding: 20px 0 15px 0;
+  border-top: 1px solid #EEE;
+  margin-top: 20px;
+  color: #555;
+}
+#footer .glyphicon  {
+  color: #D43D5C;
+}
+
+/** buy page style **/
+.ticket {
+  margin-bottom: 15px;
+  text-align: center;
+}
+.ticket h2 {
+  font-size: 1.5em;
+  text-align: center;
+  color: #004b93;
+}
+.ticket h3 {
+  font-size: 1.2em;
+  color: #B55508;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.ticket del {
+  color: #444;
+}
+.ticket span {
+  color: #D43D5C;
+}
+.ticket .input-group {
+  max-width: 160px;
+  margin: 0 auto;
+}
+.ticket form {
+  margin-bottom: 35px;
+}
+
+
+/** pay page style **/
+.dummy {
+  border: none;
+  padding: 0px;
+  box-shadow: none;
+}
+#exp-month, #exp-year {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px;
+}
+#cards {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+#pay {
+  text-align: right;
 }

@@ -14,19 +14,19 @@
   echo EtTicket::createTableIfNotExist() ? "success\n" : "fail\n";
   }
   
-  //-- Order:Clear cache
+  //-- Lead:Clear cache
   if ($command == "cc") {
     if ($arg1 == "all" || $arg1 == "experiencethis") {
-      echo " - Drop table 'order' ";
-      echo Order::dropTable() ? "success\n" : "fail\n";
+      echo " - Drop table 'lead' ";
+      echo Lead::dropTable() ? "success\n" : "fail\n";
     }
   }
 
-  //-- Order:Import DB
-  if ($command == "import" && $arg1 == "db" && (is_null($arg2) || $arg2 == "order") ) {
+  //-- Lead:Import DB
+  if ($command == "import" && $arg1 == "db" && (is_null($arg2) || $arg2 == "lead") ) {
   //- create tables if not exits
-  echo " - Create table 'order' ";
-  echo Order::createTableIfNotExist() ? "success\n" : "fail\n";
+  echo " - Create table 'lead' ";
+  echo Lead::createTableIfNotExist() ? "success\n" : "fail\n";
   }
   
   //-- Transaction:Clear cache

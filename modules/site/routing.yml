@@ -4,17 +4,42 @@ routing:
     isSecure: 0
     i18n: 0
     controller: site/index
-  buy:
-    path: ^\/buy\/?$
+  order:
+    path: ^\/order\/?$
     isSecure: 0
     i18n: 0
-    controller: site/buy
+    controller: site/order
+  details:
+    path: ^\/details\/?$
+    isSecure: 0
+    i18n: 0
+    controller: site/details
+  pay:
+    path: ^\/pay\/?$
+    isSecure: 0
+    i18n: 0
+    controller: site/pay
+  payment:
+    path: ^\/payment\/?$
+    isSecure: 0
+    i18n: 0
+    controller: site/payment
+  payment_success:
+    path: ^\/payment\/success$
+    isSecure: 0
+    i18n: 1
+    controller: site/payment_success
+  payment_failed:
+    path: ^\/payment\/failed$
+    isSecure: 0
+    i18n: 1
+    controller: site/payment_failed
+    
   wechat_api:
     path: ^\/wechat\/api\/?$
     isSecure: 0
     i18n: 0
     controller: site/wechat/api
-
 
     
 assets:

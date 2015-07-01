@@ -46,13 +46,13 @@ if (is_backend() && $user->isLogin()) {
   Backend::registerSideNav(
   '
   <li>
-    <a href="#"><i class="fa fa-folder-open"></i> '.i18n(array('en' => 'Order','zh' => '订单',)).'<span class="fa arrow"></span></a>
+    <a href="#"><i class="fa fa-folder-open"></i> '.i18n(array('en' => 'Lead','zh' => '订单',)).'<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
-      <li><a href="'.uri('admin/order/list').'">'.i18n(array(
+      <li><a href="'.uri('admin/lead/list').'">'.i18n(array(
           'en' => 'List',
           'zh' => '列表'
       )).'</a></li>
-      <li><a href="'.uri('admin/order/create').'">'.i18n(array(
+      <li><a href="'.uri('admin/lead/create').'">'.i18n(array(
           'en' => 'Create',
           'zh' => '创建'
       )).'</a></li>

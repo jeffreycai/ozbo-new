@@ -10,8 +10,8 @@ if (isset($_POST['submit'])) {
   
   // validation for $ticket_id
   $ticket_id = isset($_POST["ticket_id"]) ? strip_tags($_POST["ticket_id"]) : null;  
-  // validation for $order_id
-  $order_id = isset($_POST["order_id"]) ? strip_tags($_POST["order_id"]) : null;  
+  // validation for $lead_id
+  $lead_id = isset($_POST["lead_id"]) ? strip_tags($_POST["lead_id"]) : null;  
   // validation for $timestamp
   $timestamp = isset($_POST["timestamp"]) ? strip_tags($_POST["timestamp"]) : null;  
   // validation for $payment
@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
   // proceed for $ticket_id
   $object->setTicketId($ticket_id);
   
-  // proceed for $order_id
-  $object->setOrderId($order_id);
+  // proceed for $lead_id
+  $object->setLeadId($lead_id);
   
   // proceed for $timestamp
   $object->setTimestamp($timestamp);

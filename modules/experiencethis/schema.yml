@@ -44,13 +44,14 @@ et_ticket:
       zh: ExperienceThis 电影票
 
     
-order:
+lead:
   pk: id
   fields:
     id: INT NOT NULL AUTO_INCREMENT
     email: VARCHAR(128)
     wechat_id: VARCHAR(32)
     ticket_type: TINYINT(1)
+    ticket_num: TINYINT
     created_at: INT
     processed: TINYINT(1) DEFAULT 0
     processed_at: INT
@@ -72,6 +73,21 @@ order:
             1: "Adult eSaver"
             2: "eMovie"
             3: "Child eSaver"
+      ticket_num:
+        widget: select
+        widget_conf:
+          required: 1
+          options:
+            1: 1
+            2: 2
+            3: 3
+            4: 4
+            5: 5
+            6: 6
+            7: 7
+            8: 8
+            9: 9
+            10: 10
       created_at:
         widget: text
         widget_conf:
@@ -84,7 +100,7 @@ order:
         widget_conf:
           required: 0
     names:
-      en: Order
+      en: Lead
       zh: 订单
 
 transaction:
@@ -92,7 +108,7 @@ transaction:
   fields:
     id: INT NOT NULL AUTO_INCREMENT
     ticket_id: INT
-    order_id: INT
+    lead_id: INT
     timestamp: INT
     payment: FLOAT
     gross_profit: FLOAT
@@ -102,9 +118,9 @@ transaction:
       references: et_ticket.id
       on_delete: CASCADE
       on_update: CASCADE
-    order_id:
-      foreign_key: order_id
-      references: order.id
+    lead_id:
+      foreign_key: lead_id
+      references: lead.id
       on_delete: CASCADE
       on_update: CASCADE
   form:
@@ -113,7 +129,7 @@ transaction:
         widget: text
         widget_conf:
           required: 0
-      order_id:
+      lead_id:
         widget: text
         widget_conf:
           required: 0

@@ -4,16 +4,20 @@ ticket_type:
     original_name: "Adult eSaver"
     cost: 10.5
     original_cost: 20
+    description: 成人折扣通票。除周六晚5点之后不可使用外，其他时段都可使用。请认清票子的使用期限，通常为4-6个月。
+    margin: 3.3
   2:
-    name: "成人折扣通票"
+    name: "成人折扣通票(含周六晚)"
     original_name: "eMovie"
     cost: 12.8
     original_cost: 20
-  3:
-    name: "儿童折扣通票"
-    original_name: "Child eSaver"
-    cost: 8
-    original_cost: 17
+    description: 成人折扣通票。全年任何时段都可使用。请认清票子的使用期限，通常为4-6个月。
+    margin: 3
+#  3:
+#    name: "儿童折扣通票"
+#    original_name: "Child eSaver"
+#    cost: 8
+#    original_cost: 17
 
 payment_type:
   1: stripe
@@ -41,3 +45,5 @@ buyer:
   suburb: Parramatta
   state: NSW
   postcode: 2150
+  
+stock_warning_threshold: 5

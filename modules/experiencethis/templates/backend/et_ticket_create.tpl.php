@@ -27,8 +27,8 @@
 </div>
   
 <div class='form-group'>
-  <label for='local_url'>local_url</label>
-  <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['local_url']) ? strip_tags($_POST['local_url']) : '') : $object->getLocalUrl()))) ?>' type='text' class='form-control' id='local_url' name='local_url' />
+  <label for='local_path'>local_path</label>
+  <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['local_path']) ? strip_tags($_POST['local_path']) : '') : $object->getLocalPath()))) ?>' type='text' class='form-control' id='local_path' name='local_path' />
 </div>
   
 <div class='form-group'>

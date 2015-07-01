@@ -20,8 +20,8 @@ if (isset($_POST['submit'])) {
     $error_flag = true;
   }
   
-  // validation for $local_url
-  $local_url = isset($_POST["local_url"]) ? strip_tags($_POST["local_url"]) : null;  
+  // validation for $local_path
+  $local_path = isset($_POST["local_path"]) ? strip_tags($_POST["local_path"]) : null;  
   // validation for $ticket_type
   $ticket_type = isset($_POST["ticket_type"]) ? strip_tags($_POST["ticket_type"]) : null;
   if (empty($ticket_type)) {
@@ -44,8 +44,8 @@ if (isset($_POST['submit'])) {
   // proceed for $url
   $object->setUrl($url);
   
-  // proceed for $local_url
-  $object->setLocalUrl($local_url);
+  // proceed for $local_path
+  $object->setLocalPath($local_path);
   
   // proceed for $ticket_type
   if (!empty($ticket_type)) {

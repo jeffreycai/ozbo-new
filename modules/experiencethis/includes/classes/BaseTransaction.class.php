@@ -5,7 +5,7 @@ include_once MODULESROOT . DS . 'core' . DS . 'includes' . DS . 'classes' . DS .
  * DB fields
  * - id
  * - ticket_id
- * - order_id
+ * - lead_id
  * - timestamp
  * - payment
  * - gross_profit
@@ -41,11 +41,11 @@ class BaseTransaction extends DBObject {
    public function getTicketId() {
      return $this->getDbFieldTicket_id();
    }
-   public function setOrderId($var) {
-     $this->setDbFieldOrder_id($var);
+   public function setLeadId($var) {
+     $this->setDbFieldLead_id($var);
    }
-   public function getOrderId() {
-     return $this->getDbFieldOrder_id();
+   public function getLeadId() {
+     return $this->getDbFieldLead_id();
    }
    public function setTimestamp($var) {
      $this->setDbFieldTimestamp($var);
@@ -87,7 +87,7 @@ class BaseTransaction extends DBObject {
 CREATE TABLE IF NOT EXISTS `transaction` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `ticket_id` INT ,
-  `order_id` INT ,
+  `lead_id` INT ,
   `timestamp` INT ,
   `payment` FLOAT ,
   `gross_profit` FLOAT ,
@@ -99,10 +99,10 @@ CONSTRAINT `fk-transaction-ticket_id`
   REFERENCES `et_ticket` (`id`)
   ON DELETE CASCADE
   ON UPDATE CASCADE ,
-INDEX `fk-transaction-order_id-idx` (`order_id` ASC),
-CONSTRAINT `fk-transaction-order_id`
-  FOREIGN KEY (`order_id`)
-  REFERENCES `order` (`id`)
+INDEX `fk-transaction-lead_id-idx` (`lead_id` ASC),
+CONSTRAINT `fk-transaction-lead_id`
+  FOREIGN KEY (`lead_id`)
+  REFERENCES `lead` (`id`)
   ON DELETE CASCADE
   ON UPDATE CASCADE)
 ENGINE = InnoDB

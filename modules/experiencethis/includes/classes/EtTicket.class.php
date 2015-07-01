@@ -18,6 +18,21 @@ class EtTicket extends BaseEtTicket {
     return null;
   }
   
+  static function findAllUnsoldByType($type) {
+    global $mysqli;
+    $query = "SELECT * FROM et_ticket WHERE ticket_type=$type AND (sent_at IS NULL OR sent_at=0)";
+    $result = $mysqli->query($query);
+    
+    $rtn = array();
+    while ($result && $b = $result->fetch_object()) {
+      $obj= new EtTicket();
+      DBObject::importQueryResultToDbObject($b, $obj);
+      $rtn[] = $obj;
+    }
+    
+    return $rtn;
+  }
+  
   public function getDownloadUrl() {
     return uri('admin/et_ticket/download/' . $this->getId());
   }

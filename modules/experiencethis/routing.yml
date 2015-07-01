@@ -83,3 +83,29 @@ routing:
     
     
     
+
+  admin_lead_list:
+    path: ^\/admin\/lead\/list\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/lead_list
+  admin_lead_edit:
+    path: ^\/admin\/lead\/edit\/(\d+)\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/lead_edit
+  admin_lead_create:
+    path: ^\/admin\/lead\/create\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/lead_create
+  admin_lead_delete:
+    path: ^\/admin\/lead\/delete\/(\d+)\/?$
+    isSecure: 1
+    i18n: 0
+    controller: experiencethis/backend/lead_delete
+  admin_lead_process:
+    path: ^\/admin\/lead\/process\/(\d+)\/?$
+    isSecure: 1
+    i18n: 1
+    controller: experiencethis/backend/lead_process

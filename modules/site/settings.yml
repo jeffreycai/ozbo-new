@@ -6,3 +6,10 @@ wechat_api:
   encoding_aes_key: P1JUsQbFX6AL5soFjtODjBkBtTg2xkBMcVAQIpLEs5Z
   appid: wxc24050ffd4090eeb
   appsecret: 9af98275771cf61c2a6c8f38cc804991
+  
+  
+stripe:
+  test_secret_key: sk_test_GfcQOKEmrCyXoe908VUQ6s89
+  test_publishable_key: pk_test_Fz1l8MTLWM1YbpOPuJjIgoZb
+  live_secret_key: sk_live_jRTrhqmzQEGBP8nZBsJCkZwN
+  live_publishable_key: pk_live_nUsFL09fNel5l5ZN1h0nw48T

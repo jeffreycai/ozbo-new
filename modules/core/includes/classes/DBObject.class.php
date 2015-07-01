@@ -34,6 +34,7 @@ abstract class DBObject {
     return $this->table_name;
   }
 
+  protected $last_execute_query;
 
   /**
    * Each sub-class needs to assign his "primary key" and "table name"
@@ -123,11 +124,12 @@ abstract class DBObject {
       }
       $query .= " (" . implode(',', $insert_fields) . ") VALUES (" . implode(',', $insert_vals) . ");";
     }
-//if ($this->getTableName() == 'sydneytoday_zufang') {
+//if ($this->getTableName() == 'order') {
 //  die($query);
 //}
 //die($query);
     $result = $mysqli->query($query);
+    $this->last_execute_query = $query;
 
     // update auto increase id as primary key
     if (!$is_update && sizeof($this->primary_key) == 1 && $this->pk_auto_increased) {
@@ -180,6 +182,8 @@ abstract class DBObject {
     $query .= ";";
 
     $result = $mysqli->query($query);
+    $this->last_execute_query = $query;
+    
     if ($result !== false && $result->num_rows != 0) {
       return true;
     }
@@ -211,6 +215,7 @@ abstract class DBObject {
       $tokens[] = "`$key`=" . self::prepare_val_for_sql($this->{"getDbField" . ucfirst($key)}());
     }
     $query .= implode(' AND ', $tokens);
+    $this->last_execute_query = $query;
 
     return $mysqli->query($query);
   }
@@ -224,6 +229,10 @@ abstract class DBObject {
     }
  
     return $rtn;
+  }
+  
+  public function getLastExecuteQuery() {
+    return $this->last_execute_query;
   }
   
   /**
