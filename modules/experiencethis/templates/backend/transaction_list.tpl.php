@@ -33,7 +33,7 @@
             <td><?php echo $object->getId() ?></td>
             <td><?php echo $object->getTicketId() ?></td>
             <td><?php echo $object->getLeadId() ?></td>
-            <td><?php echo $object->getTimestamp() ?></td>
+            <td><?php echo date('Y-m-d H:i:s',$object->getTimestamp()) ?></td>
             <td><?php echo $object->getPayment() ?></td>
             <td><?php echo $object->getGrossProfit() ?></td>
             <td>

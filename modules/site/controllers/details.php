@@ -15,7 +15,7 @@ $html->renderOut('site/html_header', array(
     'body_class' => 'details',
     'title' => $settings['sitename'] . " :: 订单详情"
 ));
-$html->renderOut('site/header');
+//$html->renderOut('site/header');
 $html->renderOut('site/details', array(
     'ticket' => $ticket,
     'ticket_num' => $ticket_num,

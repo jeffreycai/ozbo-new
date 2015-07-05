@@ -35,10 +35,10 @@
             <td><?php echo $object->getId() ?></td>
             <td><?php echo $object->getEmail() ?></td>
             <!--<td><?php echo $object->getWechatId() ?></td>-->
-            <td><?php echo $object->getTicketType() ?></td>
+            <td><?php echo $settings['ticket_type'][$object->getTicketType()]['name'] ?></td>
             <td><?php echo $object->getTicketNum() ?></td>
             <td><?php echo date('Y-m-d', $object->getCreatedAt()) ?></td>
-            <td><?php echo $object->getProcessed() ?></td>
+            <td><?php echo $object->getProcessed() ? '<span style="color: green" class="fa fa-check"></span>' : '<span style="color: red;" class="fa fa-times"></span>' ?></td>
             <td><?php echo $object->getProcessedAt() ? date('Y-m-d', $object->getProcessedAt()) : 'N/A' ?></td>
             <td>
         <div class="btn-group">

@@ -10,14 +10,8 @@ if (isset($_POST['submit'])) {
   
   // validation for $email
   $email = isset($_POST["email"]) ? strip_tags($_POST["email"]) : null;
-  $retype_email = isset($_POST["retype_email"]) ? strip_tags($_POST["retype_email"]) : null;
   if (empty($email)) {
     Message::register(new Message(Message::DANGER, i18n(array("en" => "email is required.", "zh" => "请填写email"))));
-    $error_flag = true;
-  }
-
-  if ($email != $retype_email) {
-    Message::register(new Message(Message::DANGER, i18n(array("en" => "Retype value does not match for email", "zh" => "再次输入的email与原值不匹配"))));
     $error_flag = true;
   }
   

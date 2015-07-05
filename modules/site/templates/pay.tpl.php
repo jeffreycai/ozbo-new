@@ -2,7 +2,7 @@
   
   <div class="row">
     <div class="col-xs-12">
-      <div role="alert" class="alert alert-warning"><span class="glyphicon glyphicon-info-sign"></span> 请再次确认您的订票信息，并使用信用卡支付</div>
+      <div role="alert" class="alert alert-warning"><span class="glyphicon glyphicon-info-sign"></span> 请确认您的订票信息，并使用信用卡支付</div>
     </div>
   </div>
   
@@ -199,7 +199,7 @@ function stripeResponseHandler(status, response) {
         )) ?>';
     }
     
-    $form.find('.payment-errors').show().html('<span class="glyphicon glyphicon-warning-sign"></span> ' + message);
+    $form.find('.payment-errors').show().html('<span class="glyphicon glyphicon-warning-sign"></span> ' + message + '。 支付请求取消，没有转账发生。');
     $form.find('button').prop('disabled', false).html(payment_btn_text);
   } else {
     // response contains id and card, which contains additional card details

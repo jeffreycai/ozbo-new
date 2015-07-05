@@ -47,7 +47,7 @@ if (is_null($token)) {
   
   // Create the charge on Stripe's servers - this will charge the user's card
   try {
-    $log = new Log('stripe', Log::NOTICE, 'Strip: 1. Calling Stripe API with fields - ' . serialize($description), $_SERVER['REMOTE_ADDR']);
+    $log = new Log('stripe', Log::SUCCESS, 'Strip: 1. Calling Stripe API with fields - ' . serialize($description), $_SERVER['REMOTE_ADDR']);
     $log->save();
 
     // call Stripe API to charge
@@ -99,7 +99,7 @@ if (is_null($token)) {
       } else {
         // send warning when stock is low
         if (sizeof($tickets) - $ticket_num  < $settings['stock_warning_threshold']) {
-          $msg = 'Stock running low for ticket type - ' . $ticket['name'] . '. <br /><br />Remaining stock number is ' . (sizeof($tickets) - $ticket_num). '. <br /><br />Please purchase more.';
+          $msg = 'Stock running low for ticket type - ' . $ticket['name'] . '. <br />Remaining stock number is ' . (sizeof($tickets) - $ticket_num). '. <br />Please purchase more.';
           $log = new Log('ticket', Log::WARNING, $msg, $_SERVER['REMOTE_ADDR']);
           $log->save();
           

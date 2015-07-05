@@ -44,9 +44,12 @@ function sendemailAdmin($subject, $msg) {
   } catch (phpmailerException $e) {
     $log = new Log('mail', Log::ERROR, 'Failed to send email: ' . $e->errorMessage());
     $log->save();
+    return false;
   } catch (Exception $e) {
     $log = new Log('mail', Log::ERROR, 'Failed to send email: ' . $e->getMessage());
+    return false;
   }
+  return true;
 }
 
 
@@ -88,8 +91,11 @@ function sendTicketToClient($subject, $msg, Array $attachements, $to) {
   } catch (phpmailerException $e) {
     $log = new Log('mail', Log::ERROR, 'Failed to send email: ' . $e->errorMessage());
     $log->save();
+    return false;
   } catch (Exception $e) {
     $log = new Log('mail', Log::ERROR, 'Failed to send email: ' . $e->getMessage());
     $log->save();
+    return false;
   }
+  return true;
 }

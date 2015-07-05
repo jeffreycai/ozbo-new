@@ -5,6 +5,7 @@ if (isset($_POST['submit'])) {
   $number = $_POST['number'];
   
   // login to experiencethis first so that we have the cookie
+/***
   $crawler = new Crawler();
   $crawler->setCookiePath(CACHE_DIR . DS . 'nrma_cookie.txt');
   $crawler->clearCookie();
@@ -34,12 +35,28 @@ if (isset($_POST['submit'])) {
     Message::register(new Message(Message::DANGER, 'Error when logging into Experiencethis'));
     HTML::forwardBackToReferer();
   }
+ * 
+ */
   
   /** Start doing ticket purchase **/
   $crawler = new Crawler();
   $crawler->setCookiePath(CACHE_DIR . DS . 'nrma_cookie.txt');
-//  $crawler->clearCookie();
+  $crawler->clearCookie();
   $crawler->setReferer('https://www.experiencethis.com.au/mynrma/login');
+  
+  
+  // get verification token
+  $verification_token;
+  $result = $crawler->read('https://www.experiencethis.com.au/mynrma/login');
+  $matches = array();
+  preg_match('/<[^<]+name="__RequestVerificationToken"[^<]+value="([^<]+)"/', $result, $matches);
+  if (isset($matches[1])) {
+    $verification_token = $matches[1];
+  } else {
+    Message::register(new Message(Message::DANGER, 'can not find verification token'));
+    HTML::forwardBackToReferer();
+  }
+  
   // login first
 //  $members = load_fixture('experiencethis', 'nrma_member.yml');
 //  $member_idx = array_rand($members);
@@ -47,7 +64,8 @@ if (isset($_POST['submit'])) {
   $member_id = $settings['nrma']['member_id'];
   
   $result = $crawler->post('https://www.experiencethis.com.au/mynrma/login', array(
-      "tf_membernumber" => $member_id
+      "tf_membernumber" => $member_id,
+      "__RequestVerificationToken" => $verification_token,
   ));
   // check if we login successfully
   if (strpos($result, 'Adult eSaver') == false) {

@@ -38,7 +38,7 @@ $end_entry = min(array($total, $current_page*$settings['log']['backend_per_page'
     <tr>
       <td><?php echo date('Y-m-d H:i:s', $log->getTime()); ?></td>
       <td><?php echo $log->getModule() ?></td>
-      <td><?php echo $log->getCategory(); ?></td>
+      <td><span class="label label-<?php echo str_replace("notice", "info", str_replace("error", "danger", strtolower($log->getCategory()))) ?>"><?php echo $log->getCategory(); ?></span></td>
       <td><?php echo $log->getIp(); ?></td>
       <td><?php echo $log->getContent(); ?></td>
     </tr>

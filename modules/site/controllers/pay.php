@@ -24,7 +24,7 @@ $html->renderOut('site/html_header', array(
     'body_class' => 'pay',
     'title' => $settings['sitename'] . " :: 支付"
 ));
-$html->renderOut('site/header');
+//$html->renderOut('site/header');
 $html->renderOut('site/pay', array(
     'ticket' => $ticket,
     'ticket_num' => $ticket_num,

@@ -23,11 +23,7 @@
   
 <div class='form-group'>
   <label for='email'>email</label>
-  <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['email']) ? strip_tags($_POST['email']) : '') : $object->getEmail()))) ?>' type='email' class='form-control' id='email' name='email' required />
-</div>
-<div class='form-group'>
-  <label for='retype_email'><?php echo i18n(array('en' => 'Retype', 'zh' => '再输一次')) ?> email</label>
-  <input value='<?php echo htmlentities(str_replace('\'', '"', (isset($_POST['retype_email']) ? strip_tags($_POST['retype_email']) : ''))) ?>' type='email' class='form-control' id='retype_email' name='retype_email' required />
+  <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['email']) ? strip_tags($_POST['email']) : '') : $object->getEmail()))) ?>' type='text' class='form-control' id='email' name='email' required />
 </div>
   
 <div class='form-group'>

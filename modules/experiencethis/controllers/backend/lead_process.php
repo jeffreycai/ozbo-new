@@ -40,7 +40,7 @@ if ($lead->getProcessed()) {
   } else {
     // send warning when stock is low
     if (sizeof($tickets) - $ticket_num < $settings['stock_warning_threshold']) {
-      $msg = 'Stock running low for ticket type - ' . $ticket['name'] . '. <br /><br />Remaining stock number is ' . (sizeof($tickets) - $ticket_num) . '. <br /><br />Please purchase more.';
+      $msg = 'Stock running low for ticket type - ' . $ticket['name'] . '. <br />Remaining stock number is ' . (sizeof($tickets) - $ticket_num) . '. <br />Please purchase more.';
       Message::register(new Message(Message::WARNING, $msg));
     }
     // prepare the tickets to send
@@ -74,6 +74,10 @@ if ($lead->getProcessed()) {
     $lead->setProcessed(1);
     $lead->setProcessedAt(time());
     $lead->save();
+    
+    Message::register(new Message(Message::SUCCESS, $ticket_num . ' tickets successfully sent to ' . $email));
+    HTML::forwardBackToReferer();
   }
 }
+
 

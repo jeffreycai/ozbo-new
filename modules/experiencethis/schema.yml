@@ -58,7 +58,7 @@ lead:
   form:
     fields:
       email:
-        widget: email
+        widget: text
         widget_conf:
           required: 1
       wechat_id:
