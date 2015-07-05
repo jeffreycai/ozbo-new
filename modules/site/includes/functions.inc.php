@@ -16,5 +16,21 @@ function wechat_check_signature($signature, $timestamp, $nonce, $token)
 
 
 function wechat_access_only() {
-  _debug($_SERVER['HTTP_REFERER']);
+  // we don't restric if it is dev
+  if (ENV == 'dev') {
+    return true;
+  }
+
+  if (isset($_SESSION['wechat_access']) && $_SESSION['wechat_access'] == 1) {
+    return true;
+  } else if (isset($_COOKIE['wechat_access']) && $_COOKIE['wechat_access'] == 1) {
+    return true;
+  } else if (strpos($_SERVER['HTTP_REFERER'], 'mp.weixin.qq.com')) {
+    $_SESSION['wechat_access'] = 1;
+    setcookie('wechat_access', 1, (time() + (3600 * 24 * 3)), '/' .  get_sub_root());
+    return true;
+  } else {
+    die('<meta charset="utf-8">请从微信中访问该页面');
+    return false;
+  }
 }

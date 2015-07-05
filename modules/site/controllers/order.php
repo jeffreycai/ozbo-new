@@ -1,4 +1,5 @@
 <?php
+wechat_access_only();
 
 $html = new HTML();
 $html->renderOut('site/html_header', array(
