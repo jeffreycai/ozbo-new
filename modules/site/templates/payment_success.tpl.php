@@ -6,7 +6,7 @@
     <br />
     <p>如果您没有收到电子票，请查看是否被过滤进垃圾邮件。 <strong>所有的电子票恕不退款</strong>。
     </p>
-    <p>如您有任何疑问，欢迎及时<a href="<?php echo uri('contact') ?>"><strong>联系我们</strong></a></p>
+    <p>如您有任何疑问，欢迎向我们的客服咨询。</p>
     <p>我们的微信客服号是： ozboxoffice</p>
     <br />
     <h3>您的订票详情</h3>
