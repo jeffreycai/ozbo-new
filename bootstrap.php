@@ -28,8 +28,8 @@ if (isset($custom_modules)) {
 if (strpos(__DIR__, 'dev') !== false) {
   define('ENV', 'dev');
 } else {
-  define('ENV', 'dev');
-//  define('ENV', 'prod');
+//  define('ENV', 'dev');
+  define('ENV', 'prod');
 }
 
 // error reporting
