@@ -1,12 +1,12 @@
 Options -Indexes
 
 # password protection only when it's dev site
-#AuthUserFile /home/pdrupal/.htpasswd
-#AuthName "Please log in"
-#AuthType Basic
-#require valid-user
+AuthUserFile /home/pdrupal/.htpasswd
+AuthName "Please log in"
+AuthType Basic
+require valid-user
 
-#SetEnvIf Host 8diantoutiao.websitesydney.net secure_content
+SetEnvIf Host ozboxoffice.websitesydney.net secure_content
 
 ### Apache 2.2 ###
 #Order Allow,Deny
@@ -16,19 +16,27 @@ Options -Indexes
 ##########
 
 ### Apache 2.4 ###
-#<RequireAll>
-#  Require all granted
-#  require not env secure_content
-#</RequireAll>
+<RequireAll>
+  Require all granted
+  require not env secure_content
+</RequireAll>
 ##########
 
 
 # redirect all trafice to www
+#<IfModule mod_rewrite.c>
+#  RewriteEngine on
+#
+#  RewriteCond %{HTTP_HOST} ^ozboxoffice\.com [NC]
+#  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#</IfModule>
+
+
+# redirect all /live to livesite
 <IfModule mod_rewrite.c>
   RewriteEngine on
-
-  RewriteCond %{HTTP_HOST} ^ozboxoffice\.com [NC]
-  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTP_HOST} ^ozboxoffice [NC]
+  RewriteRule ^live$ "http://52.64.68.33/admin" [NE,L,R=301]
 </IfModule>
 
 
