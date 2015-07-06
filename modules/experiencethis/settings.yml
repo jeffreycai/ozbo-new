@@ -4,7 +4,7 @@ ticket_type:
     original_name: "Adult eSaver"
     cost: 10.5
     original_cost: 20
-    description: 成人折扣通票。除周六晚5点之后不可使用外，其他时段都可使用。请认清票子的使用期限，通常为4-6个月。
+    description: 成人折扣通票。除周六晚5点之后不可使用外，其他时段都可使用(周日可以使用)。请认清票子的使用期限，通常为4-6个月。
     margin: 3.3
   2:
     name: "成人折扣通票(含周六晚)"

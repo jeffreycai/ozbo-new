@@ -1,4 +1,6 @@
 <?php
+wechat_access_only();
+
 $lead_id = isset($_SESSION['lead_id']) ? $_SESSION['lead_id'] : false;
 $lead;
         

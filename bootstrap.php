@@ -12,7 +12,7 @@ if (isset($custom_modules)) {
 
   $enabled_modules = array(
       'core',
-//      'static_cache',
+      'static_cache',
       'database',
       'form',
       'site',
@@ -29,7 +29,7 @@ if (strpos(__DIR__, 'dev') !== false) {
   define('ENV', 'dev');
 } else {
   define('ENV', 'dev');
-  //define('ENV', 'prod');
+//  define('ENV', 'prod');
 }
 
 // error reporting

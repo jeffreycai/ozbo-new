@@ -1,5 +1,7 @@
 <?php
 
+wechat_access_only();
+
 $ticket;
 $ticket_idx;
 $ticket_num;
@@ -13,6 +15,9 @@ if (isset($_REQUEST['submit'])) {
   
   if ($email != $email_confirm) {
     Message::register(new Message(Message::DANGER, '邮件地址和确认地址不符，请检查'));
+    HTML::forwardBackToReferer();
+  } else if (!preg_match('/^[^@]+@[^\.@]+\..+$/', $email)) {
+    Message::register(new Message(Message::DANGER, '邮件地址不合法，请检查'));
     HTML::forwardBackToReferer();
   }
 } else {

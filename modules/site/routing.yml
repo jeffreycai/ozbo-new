@@ -9,6 +9,7 @@ routing:
     isSecure: 0
     i18n: 0
     controller: site/order
+    static_cache: 999999
   details:
     path: ^\/details\/?$
     isSecure: 0

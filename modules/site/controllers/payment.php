@@ -1,5 +1,7 @@
 <?php
 
+wechat_access_only();
+
 // we clear session info for previous booking
 unset($_SESSION['lead_id']);
 

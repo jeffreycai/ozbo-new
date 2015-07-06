@@ -1,4 +1,6 @@
 <?php
+wechat_access_only();
+
 $ticket;
 $ticket_num;
 $ticket_idx;
