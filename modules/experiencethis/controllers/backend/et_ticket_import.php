@@ -27,7 +27,25 @@ if (isset($_POST['submit'])) {
       }
       
       ///// load html to pdf
-      $html = file_get_contents($url);
+      $crawler = new Crawler();
+      $crawler->setCookiePath(CACHE_DIR . DS . 'experiencethis_cookie.txt');
+      $crawler->clearCookie();
+      $html = $crawler->read($url);
+      
+      $matches = array();
+      preg_match('/src="(\/evoucher\/barcode\/[^"]+)"/', $html, $matches);
+      if (isset($matches[1])) {
+        $barcode_url = "https://www.experiencethis.com.au" . $matches[1];
+        $crawler->setReferer('$url');
+        $raw = $crawler->read($barcode_url);
+        $base64encode = base64_encode($raw);
+        $src = 'data: image/png;base64,'.$base64encode;
+        $html = preg_replace('/src="(\/evoucher\/barcode\/[^"]+)"/', 'src="'.$src.'"', $html);
+      } else {
+        Message::register(new Message(Message::DANGER, 'Error when trying to get barcode image url'));
+        HTML::forwardBackToReferer();
+      }
+
       if ($html == false) {
         Message::register(new Message(Message::DANGER, "Failed to get content for ticket: ".$url));
         $error_flag++;
@@ -56,7 +74,7 @@ if (isset($_POST['submit'])) {
           // remove branding text
           $texts = array(
               'Valid for 6 months from purchase date. Minimum of 4 vouchers per transaction.',
-              'Other terms and conditions apply;&nbsp;&nbsp;<a href="https://www.experiencethis.com.au/About-Experiencethis/eVoucher-Terms-and-Conditions">click&nbsp;here</a>&nbsp;.',
+              'Other terms and conditions apply;&nbsp;&nbsp;<a href="https://www.experiencethis.com.au/About-Experiencethis/eVoucher-Terms-and-Conditions" target="_blank">click&nbsp;here</a>&nbsp;.',
               'Each product transaction must be a minimum quantity of 4 &amp; maximum of 10 per item. Transaction quantity requirements cannot consist of multiple products. ',
               'experiencethis takes no responsibility',
               'eVouchers are valid for 6 months from date of purchase. ',
