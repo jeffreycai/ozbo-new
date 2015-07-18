@@ -2,6 +2,7 @@ et_ticket:
   pk: id
   fields:
     id: INT NOT NULL AUTO_INCREMENT
+    lead_id: INT
     url: VARCHAR(256) NOT NULL
     local_path: VARCHAR(20)
     ticket_type: TINYINT(1)
@@ -10,6 +11,10 @@ et_ticket:
     created_at: INT
   form:
     fields:
+      lead_id:
+        widget: text
+        widget_conf:
+          required: 0
       url:
         widget: text
         widget_conf:

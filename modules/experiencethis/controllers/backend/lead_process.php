@@ -48,6 +48,7 @@ if ($lead->getProcessed()) {
     for ($i = 0; $i < $ticket_num; $i++) {
       $t = $tickets[$i];
       $t->setSentAt(time());
+      $t->setLeadId($lead->getId());
       $t->save();
       $tickets_to_send[] = TICKET_DIR . DS . $t->getLocalPath();
     }

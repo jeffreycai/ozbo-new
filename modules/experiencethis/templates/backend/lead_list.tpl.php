@@ -37,9 +37,9 @@
             <!--<td><?php echo $object->getWechatId() ?></td>-->
             <td><?php echo $settings['ticket_type'][$object->getTicketType()]['name'] ?></td>
             <td><?php echo $object->getTicketNum() ?></td>
-            <td><?php echo date('Y-m-d', $object->getCreatedAt()) ?></td>
+            <td><?php echo date('Y-m-d H:i:s', $object->getCreatedAt()) ?></td>
             <td><?php echo $object->getProcessed() ? '<span style="color: green" class="fa fa-check"></span>' : '<span style="color: red;" class="fa fa-times"></span>' ?></td>
-            <td><?php echo $object->getProcessedAt() ? date('Y-m-d', $object->getProcessedAt()) : 'N/A' ?></td>
+            <td><?php echo $object->getProcessedAt() ? date('Y-m-d H:i:s', $object->getProcessedAt()) : 'N/A' ?></td>
             <td>
         <div class="btn-group">
           <a class="btn btn-<?php echo $object->getProcessed() ? 'default' : 'success' ?> btn-sm" href="<?php echo uri('admin/lead/process/' . $object->getId()) ?>"><i class="fa fa-send">处理</i></a>

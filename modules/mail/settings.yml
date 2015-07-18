@@ -8,7 +8,7 @@ mail:
     host: smtp.mandrillapp.com
     port: 587
     username: HFDT0EEMN12bj5yM2EDQ2gTMsJXan5WYlp2T
-    nickname: DingTie
+    nickname: 澳洲电影票务
     password: GRTQpVjb3cmZtkVWJFXTyFFNitUOYhnWqBzdIJGN
     
   ticket:

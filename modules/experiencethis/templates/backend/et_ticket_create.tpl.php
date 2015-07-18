@@ -22,13 +22,18 @@
 <form role="form" method="POST" action="<?php echo uri('admin/et_ticket/create') ?>">
   
 <div class='form-group'>
+  <label for='lead_id'>lead_id</label>
+  <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['lead_id']) ? strip_tags($_POST['lead_id']) : '') : $object->getLeadId()))) ?>' type='text' class='form-control' id='lead_id' name='lead_id' />
+</div>
+  
+<div class='form-group'>
   <label for='url'>url</label>
   <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['url']) ? strip_tags($_POST['url']) : '') : $object->getUrl()))) ?>' type='text' class='form-control' id='url' name='url' required size=256 />
 </div>
   
 <div class='form-group'>
-  <label for='local_path'>local_path</label>
-  <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['local_path']) ? strip_tags($_POST['local_path']) : '') : $object->getLocalPath()))) ?>' type='text' class='form-control' id='local_path' name='local_path' />
+  <label for='local_url'>local_url</label>
+  <input value='<?php echo htmlentities(str_replace('\'', '"', ($object->isNew() ? (isset($_POST['local_url']) ? strip_tags($_POST['local_url']) : '') : $object->getLocalUrl()))) ?>' type='text' class='form-control' id='local_url' name='local_url' />
 </div>
   
 <div class='form-group'>

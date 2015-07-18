@@ -12,6 +12,8 @@ if (isset($_POST['submit'])) {
 
   /// validation
   
+  // validation for $lead_id
+  $lead_id = isset($_POST["lead_id"]) ? strip_tags($_POST["lead_id"]) : null;  
   // validation for $url
   $url = isset($_POST["url"]) ? strip_tags($_POST["url"]) : null;
   if (empty($url)) {
@@ -24,8 +26,8 @@ if (isset($_POST['submit'])) {
     $error_flag = true;
   }
   
-  // validation for $local_path
-  $local_path = isset($_POST["local_path"]) ? strip_tags($_POST["local_path"]) : null;  
+  // validation for $local_url
+  $local_url = isset($_POST["local_url"]) ? strip_tags($_POST["local_url"]) : null;  
   // validation for $ticket_type
   $ticket_type = isset($_POST["ticket_type"]) ? strip_tags($_POST["ticket_type"]) : null;
   if (empty($ticket_type)) {
@@ -45,11 +47,14 @@ if (isset($_POST['submit'])) {
   // validation for $created_at
   $created_at = isset($_POST["created_at"]) ? strip_tags($_POST["created_at"]) : null;  /// proceed submission
   
+  // proceed for $lead_id
+  $object->setLeadId($lead_id);
+  
   // proceed for $url
   $object->setUrl($url);
   
-  // proceed for $local_path
-  $object->setLocalPath($local_path);
+  // proceed for $local_url
+  $object->setLocalUrl($local_url);
   
   // proceed for $ticket_type
   if (!empty($ticket_type)) {

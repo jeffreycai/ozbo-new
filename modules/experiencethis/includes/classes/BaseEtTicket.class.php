@@ -4,6 +4,7 @@ include_once MODULESROOT . DS . 'core' . DS . 'includes' . DS . 'classes' . DS .
 /**
  * DB fields
  * - id
+ * - lead_id
  * - url
  * - local_path
  * - ticket_type
@@ -35,6 +36,12 @@ class BaseEtTicket extends DBObject {
    }
    public function getId() {
      return $this->getDbFieldId();
+   }
+   public function setLeadId($var) {
+     $this->setDbFieldLead_id($var);
+   }
+   public function getLeadId() {
+     return $this->getDbFieldLead_id();
    }
    public function setUrl($var) {
      $this->setDbFieldUrl($var);
@@ -93,6 +100,7 @@ class BaseEtTicket extends DBObject {
       return $mysqli->query('
 CREATE TABLE IF NOT EXISTS `et_ticket` (
   `id` INT NOT NULL AUTO_INCREMENT ,
+  `lead_id` INT ,
   `url` VARCHAR(256) NOT NULL ,
   `local_path` VARCHAR(20) ,
   `ticket_type` TINYINT(1) ,

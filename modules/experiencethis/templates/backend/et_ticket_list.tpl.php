@@ -19,6 +19,7 @@
   <thead>
       <tr role="row">
                 <th>id</th>
+                <th>lead_id</th>
                 <th>url</th>
                 <th>local_path</th>
                 <th>ticket_type</th>
@@ -32,12 +33,13 @@
     <?php foreach ($objects as $object): ?>
     <tr>
             <td><?php echo $object->getId() ?></td>
+            <td><?php echo $object->getLeadId() ? $object->getLeadId() : '' ?></td>
             <td><?php echo $object->getUrl() ?></td>
             <td><a href="<?php echo $object->getDownloadUrl() ?>"><?php echo $object->getLocalPath() ?></a></td>
             <td><?php echo $settings['ticket_type'][$object->getTicketType()]['name'] ?></td>
             <td><?php echo $object->getCost() ?></td>
-            <td><?php echo $object->getSentAt() ?></td>
-            <td><?php echo $object->getCreatedAt() ?></td>
+            <td><?php echo $object->getSentAt() ? date('Y-m-d H:i:s', $object->getSentAt()) : 'N/A' ?></td>
+            <td><?php echo $object->getCreatedAt() ? date('Y-m-d H:i:s', $object->getCreatedAt()) : 'N/A' ?></td>
             <td>
         <div class="btn-group">
           <a class="btn btn-default btn-sm" href="<?php echo uri('admin/et_ticket/edit/' . $object->getId()); ?>"><i class="fa fa-edit"></i></a>

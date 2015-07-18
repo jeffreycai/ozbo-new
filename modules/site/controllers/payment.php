@@ -111,6 +111,7 @@ if (is_null($token)) {
         $tickets_to_send = array();
         for ($i = 0; $i < $ticket_num; $i++) {
           $t = $tickets[$i];
+          $t->setLeadId($lead->getId());
           $t->setSentAt(time());
           $t->save();
           $tickets_to_send[] = TICKET_DIR . DS . $t->getLocalPath();
