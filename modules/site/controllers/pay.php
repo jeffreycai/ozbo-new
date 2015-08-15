@@ -19,6 +19,9 @@ if (isset($_REQUEST['submit'])) {
   } else if (!preg_match('/^[^@]+@[^\.@]+\..+$/', $email)) {
     Message::register(new Message(Message::DANGER, '邮件地址不合法，请检查'));
     HTML::forwardBackToReferer();
+  } else if (preg_match('/qq\.com/', $email)) {
+    Message::register(new Message(Message::DANGER, '您好，我们暂不支持QQ邮箱。请选用其他邮箱，谢谢'));
+    HTML::forwardBackToReferer();
   }
 } else {
   die('Direct access is not allowed');

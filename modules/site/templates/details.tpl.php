@@ -38,7 +38,10 @@
             
             <div class="row">
               <div class="col-xs-12">
-                <p><small>电影票会以email的形式发送到您的电子邮箱。 请在观影时将电影票打印出来，或者直接出示手机上的电子票扫码即可。</small></p>
+                <p><small>电影票会以email的形式发送到您的电子邮箱。 请在观影时将电影票打印出来，或者直接出示手机上的电子票扫码即可。</small>
+                  <br />
+                  <small style="color: red;">由于QQ邮箱受大量垃圾邮件影响，已开始屏蔽任何自动邮件系统，请选用其他非QQ邮箱接收我们的电子票，谢谢</small>
+                </p>
                 <div class="form-group">
                   <label>请填写接收电子票的邮箱</label>
                   <input type="email" placeholder="Your email" required="required" class="form-control" id="email" name="email">
