@@ -49,4 +49,19 @@ class EtTicket extends BaseEtTicket {
       unlink(TICKET_DIR . DS . $this->getLocalPath());
     }
   }
+  
+  static function findAllWithPage($page, $entries_per_page) {
+    global $mysqli;
+    $query = "SELECT * FROM et_ticket ORDER BY created_at DESC LIMIT " . ($page - 1) * $entries_per_page . ", " . $entries_per_page;
+    $result = $mysqli->query($query);
+    
+    $rtn = array();
+    while ($result && $b = $result->fetch_object()) {
+      $obj= new EtTicket();
+      DBObject::importQueryResultToDbObject($b, $obj);
+      $rtn[] = $obj;
+    }
+    
+    return $rtn;
+  }
 }

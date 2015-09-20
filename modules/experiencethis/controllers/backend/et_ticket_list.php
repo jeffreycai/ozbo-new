@@ -7,9 +7,6 @@ if (!preg_match('/^\d+$/', $page)) {
 }
 
 
-$objects = EtTicket::findAll();
-
-
 $html = new HTML();
 
 $html->renderOut('core/backend/html_header', array('title' => i18n(array(
