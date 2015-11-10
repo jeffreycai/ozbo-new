@@ -9,7 +9,7 @@ wechat_api:
   
   
 stripe:
-  test_secret_key: sk_test_GfcQOKEmrCyXoe908VUQ6s89
-  test_publishable_key: pk_test_Fz1l8MTLWM1YbpOPuJjIgoZb
-  live_secret_key: sk_live_jRTrhqmzQEGBP8nZBsJCkZwN
-  live_publishable_key: pk_live_nUsFL09fNel5l5ZN1h0nw48T
+  test_secret_key: yhjN==AO5IXYwlGcwpXZUlkNGV1MMJlW1YUa3xUZwxUWfR3clR3XrNHR
+  test_publishable_key: ZNkS==QZRdWQl92ZTBnZwEDc2UHdCJTYxZkQYZGc0YVWfR3clR3XrBnc
+  live_secret_key: UF2Y==wYMlmbW1UdFhDboNXUO5Ga6xWb2EEOwBHR5dFRfVmdpx2XrNHa
+  live_publishable_key: 1Qzb==gcvF3c5UDSORjc5FTatRTc1Y0alxkQkZHTOdDafVmdpx2XrBHM

@@ -28,7 +28,7 @@ if (is_null($token)) {
   
   // Set your secret key: remember to change this to your live secret key in production
   // See your keys here https://dashboard.stripe.com/account
-  Stripe::setApiKey(ENV == 'prod' ? $settings['stripe']['live_secret_key'] : $settings['stripe']['test_secret_key']);
+  Stripe::setApiKey(ENV == 'prod' ? decrypt($settings['stripe']['live_secret_key']) : decrypt($settings['stripe']['test_secret_key']));
 
   // Get the credit card details submitted by the form
   // $token = $_POST['stripeToken'];

@@ -100,7 +100,7 @@
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
 // This identifies your website in the createToken call below
-Stripe.setPublishableKey('<?php echo ENV == 'prod' ? $settings['stripe']['live_publishable_key'] : $settings['stripe']['test_publishable_key'] ?>');
+Stripe.setPublishableKey('<?php echo ENV == 'prod' ? decrypt($settings['stripe']['live_publishable_key']) : decrypt($settings['stripe']['test_publishable_key']) ?>');
 var payment_btn_text;
 jQuery(function($){
   $('#creditcard').submit(function(event) {
