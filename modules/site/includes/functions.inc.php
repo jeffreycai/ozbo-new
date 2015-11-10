@@ -20,12 +20,12 @@ function wechat_access_only() {
   if (ENV == 'dev') {
     return true;
   }
-
+//print_r($_SERVER['HTTP_REFERER']);
   if (isset($_SESSION['wechat_access']) && $_SESSION['wechat_access'] == 1) {
     return true;
   } else if (isset($_COOKIE['wechat_access']) && $_COOKIE['wechat_access'] == 1) {
     return true;
-  } else if (strpos($_SERVER['HTTP_REFERER'], 'mp.weixin.qq.com')) {
+  } else if (strpos($_SERVER['HTTP_REFERER'], 'weixin')) {
     $_SESSION['wechat_access'] = 1;
     setcookie('wechat_access', 1, (time() + (3600 * 24 * 3)), '/' .  get_sub_root());
     return true;
