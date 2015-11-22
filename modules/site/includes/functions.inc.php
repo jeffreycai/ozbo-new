@@ -16,6 +16,7 @@ function wechat_check_signature($signature, $timestamp, $nonce, $token)
 
 
 function wechat_access_only() {
+  return true;
   // we don't restric if it is dev
   if (ENV == 'dev') {
     return true;
