@@ -29,10 +29,10 @@ if (is_backend() && $user->isLogin()) {
           'en' => 'Import',
           'zh' => '导入'
       )).'</a></li>
-      <li><a href="'.uri('admin/et_ticket/order').'">'.i18n(array(
+<!--      <li><a href="'.uri('admin/et_ticket/order').'">'.i18n(array(
           'en' => 'Order',
           'zh' => 'Order'
-      )).'</a></li>
+      )).'</a></li> -->
     </ul>
   </li>
   '        

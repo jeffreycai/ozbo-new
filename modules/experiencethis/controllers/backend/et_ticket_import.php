@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
       } else {
         // get ticket type
         $type;
-        if (strpos($html, 'Adult eSaver')) {
+        if (strpos($html, 'eSaver Adult')) {
             $type = EtTicket::TYPE_ADULT_ESAVER;
         } else if (strpos($html, 'eMovie')) {
             $type = EtTicket::TYPE_EMOVIE;
@@ -66,19 +66,20 @@ if (isset($_POST['submit'])) {
           // replace img src with full path
           $html = preg_replace("/src=(['\"])\//", "src=$1https://www.experiencethis.com.au/", $html);
           // remove branding
-          load_library_simple_html_dom();
-          $dom = str_get_html($html);
-          $dom->find('table',0)->outertext = '';
-          $dom->find('table',1)->find('tr',1)->outertext = '';
-          $html = $dom->save();
+//          load_library_simple_html_dom();
+//          $dom = str_get_html($html);
+//          $dom->find('table',0)->outertext = '';
+//          $dom->find('table',1)->find('tr',1)->outertext = '';
+//          $html = $dom->save();
           // remove branding text
           $texts = array(
-              'Valid for 6 months from purchase date. Minimum of 4 vouchers per transaction.',
-              'Other terms and conditions apply;&nbsp;&nbsp;<a href="https://www.experiencethis.com.au/About-Experiencethis/eVoucher-Terms-and-Conditions" target="_blank">click&nbsp;here</a>&nbsp;.',
-              'Each product transaction must be a minimum quantity of 4 &amp; maximum of 10 per item. Transaction quantity requirements cannot consist of multiple products. ',
+//              'Valid for 6 months from purchase date. Minimum of 4 vouchers per transaction.',
+//              'Other terms and conditions apply;&nbsp;&nbsp;<a href="https://www.experiencethis.com.au/About-Experiencethis/eVoucher-Terms-and-Conditions" target="_blank">click&nbsp;here</a>&nbsp;.',
+//              'Each product transaction must be a minimum quantity of 4 &amp; maximum of 10 per item. Transaction quantity requirements cannot consist of multiple products. ',
+              '<a href="/About-Experiencethis/eVoucher-Terms-and-Conditions" target="_blank">click here</a>.',
               'experiencethis takes no responsibility',
               'eVouchers are valid for 6 months from date of purchase. ',
-              'For NRMA Member general enquiries, please call 13 11 22. If you have any enquiries regarding your movie voucher transaction, please email nrma@experiencethis.com.au For Event Cinemas enquiries, visit www.eventcinemas.com.au/faq'
+//              'For NRMA Member general enquiries, please call 13 11 22. If you have any enquiries regarding your movie voucher transaction, please email nrma@experiencethis.com.au For Event Cinemas enquiries, visit www.eventcinemas.com.au/faq'
           );
           foreach ($texts as $text) {
             if (strpos($html, $text)) {
